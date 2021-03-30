@@ -13,4 +13,4 @@ Ce BigWigs à été fait pour le client FR. Mais le client EN/US devrait pouvoir
 
 ## License
 Les ajustements on été fait originellement par MOUZU, Dorann et Hosq<br>
-Les ajustement pour NostalGeek sont fait par <b>Lylat</b>.<br>
+Les ajustement pour NostalGeek ont été fait par <b>Lylat</b>. Ils sont maintenant poursuivits par Brz<br>
