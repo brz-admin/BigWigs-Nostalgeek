@@ -622,7 +622,7 @@ BabbleBoss:RegisterTranslations("frFR", function()
 		["The Windreaver"] = "Ouraganien",
 		["Baron Charr"] = "Baron Charr",
 		["Gurubashi Berserker"] = "Berserker Gurubashi",
-		["Anubisath Warder"] = "Gardien Anubisath",
+		["Anubisath Warder"] = "Garde Anubisath",
 		["Ancient Core Hound"] = "Ancien chien du magma",
 		["Princess Tempestria"] = "Princesse Tempestria",
 		["Grethok the Controller"] = "Grethok le Contr\195\180leur",
