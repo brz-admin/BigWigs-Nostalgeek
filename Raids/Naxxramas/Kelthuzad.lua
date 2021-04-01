@@ -218,12 +218,8 @@ L:RegisterTranslations("frFR", function() return {
 	phase2_bar = "Kel'Thuzad arrive!",
 
 	phase3_soon_warning = "Phase 3 Imminente!",
-	pphase3_trigger = "Maître ! J'ai besoin d'aide !",
+	phase3_trigger = "Maître ! J'ai besoin d'aide !",
 	phase3_warning = "Phase 3!, Gardiens dans ~15sec!",
-
-	guardians_trigger = "Très bien... guerriers des terres gelées, levez-vous ! Je vous ordonne de vous battre, tuer et mourir pour votre maître. Ne permettez à personne de survivre...",
-	guardians_warning = "Gardien dans ~10sec!",
-	guardians_bar = "Arrivée d'un Gardien",
 
 	fissure_trigger = "Kel'Thuzad lance Fissure d'ombre.",
 	fissure_warning = "Fissure d'ombre!",
@@ -239,8 +235,8 @@ L:RegisterTranslations("frFR", function() return {
 	add_bar = "%d/14 %s",
 
 	frostblast_bar = "Trait de givre possible",
-	frostblast_trigger = "^([^%s]+) ([^%s]+) les effets de Trait de givre",
-	frostblast_trigger1 = "Kel'Thuzad lance Trait de givre.",
+	frostblast_trigger1 = "^([^%s]+) ([^%s]+) les effets de Trait de givre",
+	frostblast_trigger2 = "Kel'Thuzad lance Trait de givre.",
 	frostblast_warning = "Trait de givre!",
 	frostblast_soon_message = "Trait de givre Possible dans ~5sec!",
 
