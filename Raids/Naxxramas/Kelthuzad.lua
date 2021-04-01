@@ -15,9 +15,6 @@ L:RegisterTranslations("enUS", function() return {
 
 	KELTHUZADCHAMBERLOCALIZEDLOLHAX = "Kel'Thuzad Chamber",
 
-	Unstoppable_Abomination = "Unstoppable Abomination",
-	Soul_Weaver = "Soul Weaver",
-
 	phase_cmd = "phase",
 	phase_name = "Phase Warnings",
 	phase_desc = "Warn for phases.",
@@ -142,9 +139,6 @@ L:RegisterTranslations("frFR", function() return {
 	--cmd = "Kelthuzad",
 
 	KELTHUZADCHAMBERLOCALIZEDLOLHAX = "Appartements de Kel'Thuzad",
-
-	Unstoppable_Abomination = "Abomination irrésistible",
-	Soul_Weaver = "Tisseur d'âme",
 
 	--phase_cmd = "phase",
 	phase_name = "Avertissements Phases",
@@ -416,10 +410,10 @@ local timer = {
 	firstDetonate = 20,
 	detonate = 5,
 	nextDetonate = {20,25},
-	firstFrostblast = 40,
-	frostblast = {40,60},
-	firstMindcontrol = 20,
-	mindcontrol = {60,180},
+	firstFrostblast = 50,
+	frostblast = {30,60},
+	firstMindcontrol = 60,
+	mindcontrol = {60,90},
 	firstGuardians = 5,
 	guardians = 7,
 }
@@ -518,10 +512,10 @@ function module:OnEngage()
 		timePhase1Start = GetTime() 	-- start of p1, used for tracking add counts
 		numAbominations = 0
 		numWeavers = 0
-		self:Bar(string.format(L["add_bar"], numAbominations, L["Unstoppable_Abomination"]), timer.phase1, icon.abomination)
-		self:Bar(string.format(L["add_bar"], numWeavers, L["Soul_Weaver"]), timer.phase1, icon.soulWeaver)
+		self:Bar(string.format(L["add_bar"], numAbominations, "Unstoppable Abomination"), timer.phase1, icon.abomination)
+		self:Bar(string.format(L["add_bar"], numWeavers, "Soul Weaver"), timer.phase1, icon.soulWeaver)
 	end
-	self:KTM_SetTarget(L["Unstoppable_Abomination"])
+	self:KTM_SetTarget("Unstoppable Abomination")
 end
 
 -- called after boss is disengaged (wipe(retreat) or victory)
@@ -568,8 +562,6 @@ function module:CHAT_MSG_MONSTER_YELL(msg)
 		self:Sync(syncName.mindcontrol)
 		--elseif msg == L["frostblast_trigger1"] then
 		--	self:Sync(syncName.frostblast)
-	elseif msg == L["start_trigger"] or msg == L["start_trigger1"] then
-		self:OnEngage();
 	end
 end
 
@@ -583,9 +575,9 @@ function module:CHAT_MSG_COMBAT_HOSTILE_DEATH(msg)
 	BigWigs:CheckForBossDeath(msg, self)
 
 	local _,_, mob = string.find(msg, L["add_dead_trigger"])
-	if self.db.profile.addcount and (mob == L["Unstoppable_Abomination"]) then
+	if self.db.profile.addcount and (mob == "Unstoppable Abomination") then
 		self:Sync(syncName.abomination .. " " .. mob)
-	elseif self.db.profile.addcount and (mob == L["Soul_Weaver"]) then
+	elseif self.db.profile.addcount and (mob == "Soul Weaver") then
 		self:Sync(syncName.soulWeaver .. " " .. mob)
 	elseif self.db.profile.bosskill and (mob == "Kel'Thuzad") then
 		self:SendBossDeathSync()
@@ -735,8 +727,8 @@ function module:Phase2()
 
 	local function removeP1Bars()
 		self:RemoveBar(L["start_bar"])
-		self:RemoveBar(string.format(L["add_bar"], numWeavers, L["Soul_Weaver"]))
-		self:RemoveBar(string.format(L["add_bar"], numAbominations, L["Unstoppable_Abomination"]))
+		self:RemoveBar(string.format(L["add_bar"], numWeavers, "Soul Weaver"))
+		self:RemoveBar(string.format(L["add_bar"], numAbominations, "Unstoppable Abomination"))
 	end
 	self:ScheduleEvent("bwKTremoveP1Bars", removeP1Bars, 1, self)
 

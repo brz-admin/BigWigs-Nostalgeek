@@ -212,8 +212,8 @@ local timer = {
 	curseAfterTeleport = {2,10},
 	curse = {45,55},
 
-	wave1 = {5,11},
-	wave2_1 = {35,42},
+	wave1 = {10,16},
+	wave2_1 = {40,47},
 	wave2_2 = {52,59},
 	wave2_3 = {40,47},
 	wave2 = 0,
