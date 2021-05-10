@@ -193,12 +193,12 @@ module.toggleoptions = {"blink", "teleport", "curse", "wave", "bosskill"}
 
 -- locals
 local timer = {
-	firstBlink = {19,29},
+	firstBlink = {25,29},
 	regularBlink = {25,35},
 
 	blinkAfterTeleport = {2,6},
 
-	firstRoom = 95,
+	firstRoom = 90,
 	secondRoom = 115,
 	thirdRoom = 124,
 	room = 0, -- will be changed during the encounter
@@ -208,12 +208,12 @@ local timer = {
 	thirdBalcony = 185, -- ??
 	balcony = 0, -- will be changed during the encounter
 
-	firstCurse = {8,12},
+	firstCurse = {4,8},
 	curseAfterTeleport = {2,10},
-	curse = {45,55},
+	curse = {28,55},
 
-	wave1 = {10,16},
-	wave2_1 = {40,47},
+	wave1 = {10,11},
+	wave2_1 = {35,42},
 	wave2_2 = {52,59},
 	wave2_3 = {40,47},
 	wave2 = 0,

@@ -146,7 +146,6 @@ function module:CHAT_MSG_MONSTER_EMOTE( msg )
 	end
 end
 
-
 ------------------------------
 --      Synchronization	    --
 ------------------------------
