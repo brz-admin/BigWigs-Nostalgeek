@@ -178,16 +178,16 @@ module.toggleoptions = {"engage", "teleport", "disease", "erruption", "bosskill"
 
 -- locals
 local timer = {
-	firstDisease = 30,
-	firstDiseaseAfterDance = 5,
+	firstDisease = 14,
+	firstDiseaseAfterDance = 14,
 	disease = {20,25},
 	toFloor = 45,
 	toPlatform = 89, --dance
 	firstErruption = 15,
-	firstDanceErruption = 4,
+	firstDanceErruption = 2,
 	erruption = 0, -- will be changed during the encounter
 	erruptionSlow = 10,
-	erruptionFast = 4,
+	erruptionFast = 3,
 	dancing = 10,
 }
 local icon = {
