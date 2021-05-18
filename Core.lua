@@ -515,6 +515,10 @@ function BigWigs:CHAT_MSG_MONSTER_YELL(msg)
 			self:EnableModule(mod:ToString())
 			--self:TriggerEvent("BigWigs_SendSync", "BossEngaged "..self:ToString())
 			mod:DebugMessage(mod:ToString() .. " CHAT_MSG_MONSTER_YELL Engage")
+			if mod.bossSync == "Kel'Thuzad" then
+				mod:CancelScheduledEvent(module:ToString().."_CheckStart")
+				mod:Engage()
+			end
 			mod:SendEngageSync()
 		end
 	end
@@ -567,6 +571,7 @@ function BigWigs:CheckForEngage(module)
 		elseif not running then
 			module:ScheduleRepeatingEvent(module:ToString().."_CheckStart", module.CheckForEngage, .5, module)
 		end
+
 	end
 end
 function BigWigs.modulePrototype:CheckForEngage()

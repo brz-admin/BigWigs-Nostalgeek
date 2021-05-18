@@ -71,6 +71,12 @@ L:RegisterTranslations("enUS", function() return {
 	start_trigger1 = "Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!",
 	start_warning = "Kel'Thuzad encounter started! ~5min till he is active!",
 	start_bar = "Phase 1 Timer",
+	next_abo = "Abomination",
+	next_skull = "Skull",
+	next_weaver = "Weaver",
+	interv_abo = "Abomination every %d sec!",
+	interv_skull = "Skull every %d sec!",
+	interv_weaver = "Weaver every %d sec!",
 	attack_trigger1 = "Kel'Thuzad attacks",
 	attack_trigger2 = "Kel'Thuzad misses",
 	attack_trigger3 = "Kel'Thuzad hits",
@@ -199,6 +205,12 @@ L:RegisterTranslations("frFR", function() return {
 	start_trigger1 = "Serviteurs, valets et soldats des ténèbres glaciales, répondez à l'appel de Kel'Thuzad !",
 	start_warning = "Kel'Thuzad Engagé! ~5min avant la phase 2!",
 	start_bar = "Phase 2",
+	next_abo = "Abomination",
+	next_skull = "Squelette",
+	next_weaver = "Banshee",
+	interv_abo = "Abomination toutes les %d sec!",
+	interv_skull = "Skull toutes les %d sec!",
+	interv_weaver = "Weaver toutes les %d sec!",
 	attack_trigger1 = "Kel'Thuzad attaque",
 	attack_trigger2 = "Kel'Thuzad falla",
 	attack_trigger3 = "Kel'Thuzad touche",
@@ -325,6 +337,12 @@ L:RegisterTranslations("esES", function() return {
 	start_trigger1 = "Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!",
 	start_warning = "Kel'Thuzad encounter started! ~5min till he is active!",
 	start_bar = "Phase 1 Timer",
+	next_abo = "Abomination",
+	next_skull = "Skull",
+	next_weaver = "Weaver",
+	interv_abo = "Abomination every %d sec!",
+	interv_skull = "Skull every %d sec!",
+	interv_weaver = "Weaver every %d sec!",
 	attack_trigger1 = "Kel'Thuzad ataca",
 	attack_trigger2 = "Kel'Thuzad falla",
 	attack_trigger3 = "Kel'Thuzad golpea",
@@ -410,7 +428,7 @@ module.proximitySilent = true
 local timer = {
 	phase1 = 320,
 	firstFrostboltVolley = 30,
-	frostboltVolley = {15,30},
+	frostboltVolley = {20,30},
 	frostbolt = 2,
 	phase2 = 15,
 	firstDetonate = 20,
@@ -420,8 +438,80 @@ local timer = {
 	frostblast = {40,60},
 	firstMindcontrol = 20,
 	mindcontrol = {60,180},
-	firstGuardians = 5,
-	guardians = 7,
+	firstGuardians = 14,
+	guardians = 5,
+}
+
+local weaverTimers = {
+	["first"] = 41,
+	[1] = {
+		["interval"] = 40,
+		["duration"] = 40
+	},
+	[2] = {
+		["interval"] = 35,
+		["duration"] = 35
+	},
+	[3] = {
+		["interval"] = 30,
+		["duration"] = 30
+	},
+	[4] = {
+		["interval"] = 20,
+		["duration"] = 40
+	},
+	[5] = {
+		["interval"] = 15,
+		["duration"] = 135
+	},
+}
+
+local aboTimers = {
+	["first"] = 45,
+	[1] = {
+		["interval"] = 30,
+		["duration"] = 60
+	},
+	[2] = {
+		["interval"] = 25,
+		["duration"] = 50
+	},
+	[3] = {
+		["interval"] = 20,
+		["duration"] = 100
+	},
+	[4] = {
+		["interval"] = 15,
+		["duration"] = 45
+	},
+	[5] = {
+		["interval"] = 10,
+		["duration"] = 20
+	},
+}
+
+local skullTimers = {
+	["first"] = 12,
+	[1] = {
+		["interval"] = 5,
+		["duration"] = 65
+	},
+	[2] = {
+		["interval"] = 4,
+		["duration"] = 60
+	},
+	[3] = {
+		["interval"] = 3,
+		["duration"] = 54
+	},
+	[4] = {
+		["interval"] = 2,
+		["duration"] = 54
+	},
+	[5] = {
+		["interval"] = 1,
+		["duration"] = 47
+	},
 }
 local icon = {
 	abomination = "",
@@ -512,8 +602,84 @@ function module:OnEngage()
 	self.lastFrostBlast=0
 	self:Message(L["start_warning"], "Attention")
 	self:Bar(L["start_bar"], timer.phase1, icon.phase1)
-	self:DelayedMessage(timer.phase1 - 20, L["phase1_warn"], "Important")
 
+	local totalSkull = 1;
+	self:Bar(L["next_skull"].." "..totalSkull, skullTimers.first, "")
+	self:Message(string.format(L["interv_skull"], skullTimers[1].interval), "Attention");
+	local thisDelay = skullTimers.first;
+	for key, values in pairs(skullTimers) do
+		if (type(values) == "table") then
+			local messageDelay = 0;
+			if (skullTimers[key+1] ~= nil) then
+				messageDelay = messageDelay + values.duration
+				
+			end
+			local sectionTTL = (values.duration / values.interval)
+			for i=1, sectionTTL do
+				if not (key == 1 and i == 1) then
+					totalSkull = totalSkull + 1;
+					self:DelayedBar(thisDelay, L["next_skull"].." "..totalSkull, values.interval, "")
+					thisDelay = thisDelay + values.interval;
+					if i == sectionTTL then
+						thisDelay = thisDelay +1
+					end
+				end
+			end
+		end
+	end
+	
+	local totalWeaver = 1;
+	self:Bar(L["next_weaver"].." "..totalWeaver, weaverTimers.first, "")
+	self:Message(string.format(L["interv_weaver"], weaverTimers[1].interval), "Attention");
+	local thisDelay = weaverTimers.first;
+	for key, values in pairs(weaverTimers) do
+		if (type(values) == "table") then
+			local sectionTTL = (values.duration / values.interval)
+			for i=1, sectionTTL do
+				if not (key == 1 and i == 1) then
+					totalWeaver = totalWeaver + 1;
+					self:DelayedBar(thisDelay, L["next_weaver"].." "..totalWeaver, values.interval, "")
+					thisDelay = thisDelay + values.interval;
+					if i == sectionTTL then
+						thisDelay = thisDelay +1
+					end
+				end
+			end
+		end
+	end
+	
+	local totalAbo = 1;
+	self:Bar(L["next_abo"].." "..totalAbo, aboTimers.first, "")
+	self:Message(string.format(L["interv_abo"], aboTimers[1].interval), "Attention");
+	local thisDelay = aboTimers.first;
+	for key, values in pairs(aboTimers) do
+		if (type(values) == "table") then
+			local sectionTTL = (values.duration / values.interval)
+			for i=1, sectionTTL do
+				if not (key == 1 and i == 1) then
+					totalAbo = totalAbo + 1;
+					self:DelayedBar(thisDelay, L["next_abo"].." "..totalAbo, values.interval, "")
+					thisDelay = thisDelay + values.interval;
+					if i == sectionTTL then
+						thisDelay = thisDelay +1
+					end
+				end
+			end
+		end
+	end
+
+	local skullDelay, aboDelay, weaverDelay = skullTimers.first + skullTimers[1].duration, aboTimers.first + aboTimers[1].duration, weaverTimers.first + weaverTimers[1].duration
+
+	for i=1,4 do 
+		self:DelayedMessage(skullDelay,string.format(L["interv_skull"], skullTimers[i+1].interval), "Attention");
+		skullDelay = skullDelay + 1 + skullTimers[i+1].duration;
+		self:DelayedMessage(aboDelay,string.format(L["interv_abo"], aboTimers[i+1].interval), "Attention");
+		aboDelay = aboDelay+ 1 + aboTimers[i+1].duration;
+		self:DelayedMessage(weaverDelay,string.format(L["interv_weaver"], weaverTimers[i+1].interval), "Attention");
+		weaverDelay = weaverDelay + 1 + weaverTimers[i+1].duration;
+	end
+
+	self:DelayedMessage(timer.phase1 - 20, L["phase1_warn"], "Important")
 	if self.db.profile.addcount then
 		timePhase1Start = GetTime() 	-- start of p1, used for tracking add counts
 		numAbominations = 0
