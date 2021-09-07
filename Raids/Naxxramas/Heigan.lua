@@ -182,7 +182,8 @@ local timer = {
 	firstDiseaseAfterDance = 14,
 	disease = {20,25},
 	toFloor = 45,
-	toPlatform = 89, --dance
+	firstToPlateform = 97,
+	toPlatform = 90, --dance
 	firstErruption = 15,
 	firstDanceErruption = 2,
 	erruption = 0, -- will be changed during the encounter
@@ -234,7 +235,7 @@ end
 -- called after boss is engaged
 function module:OnEngage()
 	if self.db.profile.teleport then
-		self:Bar(L["toPlatform_bar"], timer.toPlatform, icon.toPlatform)
+		self:Bar(L["toPlatform_bar"], timer.firstToPlateform, icon.toPlatform)
 	end
 	if self.db.profile.disease then
 		self:Bar(L["dbar"], timer.firstDisease, icon.disease)
