@@ -238,7 +238,7 @@ module.toggleoptions = {"sweep", "sandblast", -1, "emerge", "submerge", -1, "ber
 
 -- locals
 local timer = {
-	nextSubmerge = 59,
+	nextSubmerge = 89,
 	sweep = 1.5,
 	earliestFirstSweep = 30,
 	latestFirstSweep = 40,
@@ -424,7 +424,7 @@ function module:Emerge()
 		self:ScheduleEvent("bwourosubmergecheck", self.DoSubmergeCheck, 5, self)
 		--self:ScheduleRepeatingEvent("bwourosubmergecheck", self.SubmergeCheck, 1, self)
 		self:CancelScheduledEvent("bwsubmergewarn")
-		self:RemoveBar(L["submergebartext"])
+		self:RemoveBar(L["bar_emerge"])
 
 		if self.db.profile.emerge then
 			self:Message(L["emergeannounce"], "Important", false, "Beware")
