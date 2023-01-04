@@ -181,11 +181,11 @@ module.toggleoptions = {"mark", "shieldwall", -1, "meteor", "void", "wrath", "bo
 local timer = {
 	firstMark = 20,
 	mark = 12,
-	firstMeteor = 30,
+	firstMeteor = 20,
 	meteor = {12,15},
-	firstWrath = 12,
+	firstWrath = 20,
 	wrath = {12,15},
-	firstVoid = 12,
+	firstVoid = 15,
 	void = {12,15},
 	shieldwall = 20,
 }
