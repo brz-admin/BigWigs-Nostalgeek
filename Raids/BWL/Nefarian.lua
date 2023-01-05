@@ -395,7 +395,7 @@ local timer = {
 	landing = 13,
 	firstClasscall = 25,
 	--firstFear = 25,
-	firstCurse = 15,
+	firstCurse = 20,
 	earliestCurse = 10,
 	latestCurse = 15,
 }
