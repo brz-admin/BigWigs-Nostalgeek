@@ -181,7 +181,7 @@ local timer = {
 	firstDisease = 14,
 	firstDiseaseAfterDance = 14,
 	disease = {20,25},
-	toFloor = 44,
+	toFloor = 46,
 	firstToPlateform = 90,
 	toPlatform = 90, --dance
 	firstErruption = 15,
@@ -189,7 +189,7 @@ local timer = {
 	erruption = 0, -- will be changed during the encounter
 	erruptionSlow = 10,
 	erruptionFast = 3,
-	dancing = 10,
+	dancing = 9,
 }
 local icon = {
 	disease = "Ability_Creature_Disease_03",
