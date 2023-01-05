@@ -96,15 +96,15 @@ L:RegisterTranslations("frFR", function() return {
 	marktrigger3 = "les effets de Marque de Blaumeux",
 	marktrigger4 = "les effets de Marque de Mograine",
 
-	voidtrigger = "Dame Blaumeux lance Zone de vide.",
+	voidtrigger = "Ta vie m'appartient !",
 	voidwarn = "Zone de Vide imminente!",
 	voidbar = "Zone de Vide",
 
-	meteortrigger = "Thane Korth'azz lance Météore sur ",
+	meteortrigger = "Thane Korth'azz lance Météore",
 	meteorwarn = "Météore!",
 	meteorbar = "Météore",
 
-	wrathtrigger = "Sire Zeliek lance Colère divine sur ",
+	wrathtrigger = "Sire Zeliek lance Colère divine",
 	wrathwarn = "Colère Divine!",
 	wrathbar = "Colère Divine",
 
