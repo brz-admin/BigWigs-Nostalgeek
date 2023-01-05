@@ -59,7 +59,7 @@ L:RegisterTranslations("enUS", function() return {
 	addcount_name = "P1 Add counter",
 	addcount_desc = "Counts number of killed adds in P1",
 
-	mc_trigger1 = "Your soul, is bound to me now!",
+	mc_trigger1 = "Your soul is bound to me, now!",
 	mc_trigger2 = "There will be no escape!",
 	mc_warning = "Mind Control!",
 	mc_bar = "Possible Mind Control!",
@@ -190,7 +190,7 @@ L:RegisterTranslations("frFR", function() return {
 	addcount_name = "Phase 1 Compteur d'Adds",
 	addcount_desc = "compte le nombre d'adds tués en Phase 1",
 
-	mc_trigger1 = "Ton âme, est ma prisonnière maintenant !",
+	mc_trigger1 = "Ton âme est ma prisonnière, maintenant !",
 	mc_trigger2 = "Pas d'évasion possible !",
 	mc_warning = "Contrôle Mental!",
 	mc_bar = "Contrôle Mental possible!",
