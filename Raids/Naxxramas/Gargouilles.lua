@@ -106,7 +106,7 @@ function BigWigsGargouille:BigWigs_RecvSync(sync)
 		self:TriggerEvent("BigWigs_Message", L["stoneskin_msg"], "Important")
 		self:TriggerEvent("BigWigs_StartBar", self, L["stoneskin_bar"], 6, "Interface\\Icons\\Ability_GolemThunderclap")
 		if self.db.profile.sound then
-			PlaySoundFile("Interface\\AddOns\\BigWigs\\Sounds\\FinishHim.mp3")
+			PlaySoundFile("Interface\\AddOns\\BigWigs_NG\\Sounds\\FinishHim.mp3")
 		end
 	end
 end

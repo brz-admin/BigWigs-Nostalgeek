@@ -47,6 +47,11 @@ L:RegisterTranslations("enUS", function() return {
 	pull3_message = "Pull in 3",
 	pull4_message = "Pull in 4",
 	pull5_message = "Pull in 5",
+	pull6_message = "Pull in 6",
+	pull7_message = "Pull in 7",
+	pull8_message = "Pull in 8",
+	pull9_message = "Pull in 9",
+	pull10_message = "Pull in 10",
 	pull0_message = "Pull!",
 
 	["Pull"] = true,
@@ -69,6 +74,11 @@ L:RegisterTranslations("frFR", function() return {
 	pull3_message = "Pull dans 3",
 	pull4_message = "Pull dans 4",
 	pull5_message = "Pull dans 5",
+	pull6_message = "Pull dans 6",
+	pull7_message = "Pull dans 7",
+	pull8_message = "Pull dans 8",
+	pull9_message = "Pull dans 9",
+	pull10_message = "Pull dans 10",
 	pull0_message = "Pull!",
 
 	--["Pull"] = true,
@@ -91,6 +101,11 @@ L:RegisterTranslations("esES", function() return {
 	pull3_message = "Tira en 3",
 	pull4_message = "Tira en 4",
 	pull5_message = "Tira en 5",
+	pull6_message = "Tira en 6",
+	pull7_message = "Tira en 7",
+	pull8_message = "Tira en 8",
+	pull9_message = "Tira en 9",
+	pull10_message = "Tira en 10",
 	pull0_message = "¡Tira!",
 
 	--["Pull"] = true,
@@ -219,8 +234,8 @@ function BigWigsPulltimer:BigWigs_PullCommand(msg)
 			return
 		end
 
-		self:Sync("BWCustomBar "..timer.pulltimer.." ".."bwPullTimer")	--[[This triggers a pull timer for older versions of bigwigs.
-		Modified CustomBar.lua RecvSync to ignore sync calls with "bwPullTimer" string in them.
+		self:Sync("BWCustomBar "..timer.pulltimer.." ".."Pull")	--[[This triggers a pull timer for older versions of bigwigs.
+		Modified CustomBar.lua RecvSync to ignore sync calls with "Pull" string in them.
 		--]]
 		self:Sync(syncName.pulltimer.." "..timer.pulltimer)
 	else
@@ -235,12 +250,22 @@ function BigWigsPulltimer:BigWigs_StopPulltimer()
 	self:CancelDelayedSound("Three")
 	self:CancelDelayedSound("Four")
 	self:CancelDelayedSound("Five")
+	self:CancelDelayedSound("Six")
+	self:CancelDelayedSound("Seven")
+	self:CancelDelayedSound("Eight")
+	self:CancelDelayedSound("Nine")
+	self:CancelDelayedSound("Ten")
 	self:CancelDelayedMessage(L["pull0_message"])
 	self:CancelDelayedMessage(L["pull1_message"])
 	self:CancelDelayedMessage(L["pull2_message"])
 	self:CancelDelayedMessage(L["pull3_message"])
 	self:CancelDelayedMessage(L["pull4_message"])
 	self:CancelDelayedMessage(L["pull5_message"])
+	-- self:CancelDelayedMessage(L["pull6_message"])
+	-- self:CancelDelayedMessage(L["pull7_message"])
+	-- self:CancelDelayedMessage(L["pull8_message"])
+	-- self:CancelDelayedMessage(L["pull9_message"])
+	-- self:CancelDelayedMessage(L["pull10_message"])
 end
 
 function BigWigsPulltimer:BigWigs_Pulltimer(duration, requester)
@@ -256,24 +281,44 @@ function BigWigsPulltimer:BigWigs_Pulltimer(duration, requester)
 	self:Message(string.format(L["pullstart_message"], timer.pulltimer, requester), "Attention", false, "RaidAlert")
 	self:Bar(L["Pull"], timer.pulltimer, icon.pulltimer)
 
-	--self:DelayedSound(timer.pulltimer, "Warning")
+	-- self:DelayedSound(timer.pulltimer - 0, "Alert")
 	self:DelayedMessage(timer.pulltimer, L["pull0_message"], "Important", false, "Warning")
-	self:DelayedSound(timer.pulltimer - 1, "One")
+	-- self:DelayedSound(timer.pulltimer - 1, "One")
 	self:DelayedMessage(timer.pulltimer - 1, L["pull1_message"], "Attention", false, false, true)
 	if not (timer.pulltimer < 2.2) then
-		self:DelayedSound(timer.pulltimer - 2, "Two")
+		-- self:DelayedSound(timer.pulltimer - 2, "Two")
 		self:DelayedMessage(timer.pulltimer - 2, L["pull2_message"], "Attention", false, false, true)
 	end
 	if not (timer.pulltimer < 3.2) then
-		self:DelayedSound(timer.pulltimer - 3, "Three")
+		self:DelayedSound(timer.pulltimer - 3, "Mario")
 		self:DelayedMessage(timer.pulltimer - 3, L["pull3_message"], "Attention", false, false, true)
 	end
 	if not (timer.pulltimer < 4.2) then
-		self:DelayedSound(timer.pulltimer - 4, "Four")
+		-- self:DelayedSound(timer.pulltimer - 4, "Mario")
 		self:DelayedMessage(timer.pulltimer - 4, L["pull4_message"], "Attention", false, false, true)
 	end
 	if not (timer.pulltimer < 5.2) then
-		self:DelayedSound(timer.pulltimer - 5, "Five")
+		-- self:DelayedSound(timer.pulltimer - 5, "Five")
 		self:DelayedMessage(timer.pulltimer - 5, L["pull5_message"], "Attention", false, false, true)
 	end
+	-- if not (timer.pulltimer < 6.2) then
+	-- 	-- self:DelayedSound(timer.pulltimer - 6, "Five")
+	-- 	self:DelayedMessage(timer.pulltimer - 6, L["pull6_message"], "Attention", false, false, true)
+	-- end
+	-- if not (timer.pulltimer < 7.2) then
+	-- 	-- self:DelayedSound(timer.pulltimer - 7, "Five")
+	-- 	self:DelayedMessage(timer.pulltimer - 7, L["pull7_message"], "Attention", false, false, true)
+	-- end
+	-- if not (timer.pulltimer < 8.2) then
+	-- 	-- self:DelayedSound(timer.pulltimer - 8, "Five")
+	-- 	self:DelayedMessage(timer.pulltimer - 8, L["pull8_message"], "Attention", false, false, true)
+	-- end
+	-- if not (timer.pulltimer < 9.2) then
+	-- 	-- self:DelayedSound(timer.pulltimer - 9, "Nine")
+	-- 	self:DelayedMessage(timer.pulltimer - 9, L["pull9_message"], "Attention", false, false, true)
+	-- end
+	-- if not (timer.pulltimer < 10.2) then
+	-- 	-- self:DelayedSound(timer.pulltimer - 10, "Ten")
+	-- 	self:DelayedMessage(timer.pulltimer - 10, L["pull10_message"], "Attention", false, false, true)
+	-- end
 end
